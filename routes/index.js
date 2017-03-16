@@ -15,10 +15,17 @@ var userSchema = {
 
 var Users = mongoose.model('Users', userSchema, 'users');
 
-/* GET home page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
-    console.log(req);
-    res.render('index', { title: 'One DAY', author: 'Elaine' });
+    res.render('index', {user: {}, title: 'One DAY'});
+});
+
+/* POST add user and direct to recommendations page upon login */
+router.post('/users/:id/recommendations', function(req, res, next) {
+    var newUser = new Users(req.body);
+    newUser.save(function (err, doc) {
+        res.render('recommendations', {title: 'Recommendations', user: doc});
+    });
 });
 
 module.exports = router;

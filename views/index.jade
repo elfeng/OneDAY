@@ -1,6 +1,12 @@
 extends layout
 
 block content
-  h1= title
-  h2= author
-  p Welcome to #{title} by #{author}
+
+    form(method="POST", action='/users/#{user.username}/recommendations')
+        label Username
+        input(name='username', type='text', value=user.username)
+        br
+        label Password
+        input(name='password', type='text', value=user.password)
+        br
+        input(placeholder='Login', type='submit')
