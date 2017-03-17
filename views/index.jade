@@ -2,7 +2,7 @@ extends layout
 
 block content
 
-    form(method="POST", action='/users/#{user.username}/recommendations')
+    form(method="POST", action='/#{user.username}/recommendations')
         label Username
         input(name='username', type='text', value=user.username)
         br
