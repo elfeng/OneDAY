@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+    h1 Preferences
+    form(method='POST', action=action)
+        label Your partner's username:
+        input(name='partner', type='text', value=user.partner)
+        br
+        label Types of cuisines you like:
+        //select
+        //    each cuisine, c in tags.enum
+        //        option(value=c) #{cuisine.name}
+        //br
+        //label Genres of movies you like:
+        //select
+        //    each genre, g in tags.enum
+        //        option(value=g) #{genre.name}
+        //br
+        //label Types of cuisines you like:
+        //select
+        //    each event, e in tags.enum
+        //        option(value=e) #{event.name}
+        br
+        input(type='submit')
