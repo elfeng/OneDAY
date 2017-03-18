@@ -22,13 +22,10 @@
 
 <body>
     <nav class="navbar navebar-fixed-top container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-nav" aria-expanded="false">
-                <span class="glyphicon glyphicon-menu-hamburger"></span>
-               
-            </button>
-            <img id="oneday" src="../img/oneday-brand.png" alt="oneday">
+       <div class="navbar-header">
+            <img id="oneday" src="../img/oneday-brown.png" alt="oneday">
         </div>
+
         <div class="collapse navbar-collapse tabs row" id="mobile-nav container-fluid">
             <ul class="nav">
                 <a href="index.html">
@@ -44,7 +41,7 @@
                     <li>Profile</li>
                 </a>
                 <a id="sign-in" href="sign-in.html">
-                <li>Sign in</li>
+                    <li>Sign in</li>
                 </a>
             </ul>
         </div>
@@ -65,38 +62,28 @@
             });
         }
 
-        function initMap() {
-            var vancouver = {
-                lat: 49.2462,
-                lng: -123.126
-            };
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 13,
-                center: vancouver
-            });
+        var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' + '<p>Marker1</p>'
+        '</div>';
 
-            var contentString = '<div id="content">' +
-                '<div id="siteNotice">' +
-                '</div>' +'<p>Hello World</p>'
-                '</div>';
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString,
+            maxWidth: 200
+        });
 
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                maxWidth: 200
-            });
+        var marker = new google.maps.Marker({
+            position: vancouver,
+            map: map,
+            title: 'Hello World!'
 
-            var marker = new google.maps.Marker({
-                position: vancouver,
-                map: map,
-                title: 'Hello World!'
+        });
 
-            });
-
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
-            });
-        }
+        marker.addListener('click', function() {
+            infowindow.open(map, marker);
+        });
+        
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjVJj7UJVjfb5G1_-LPkHEJgRseORP6tU     
 &callback=initMap">
