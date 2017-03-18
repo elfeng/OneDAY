@@ -1,14 +1,19 @@
 extends layout
 
 block content
-    h1= "Hello, " +  user.username
-    br
-    h2 Activities you have added to calendar:
-    ul#activities-added-to-calendar
-        each activity in user.activitiesAddedToCalendar
-            li
-                a(href='/activities/#{activity.name}') #{activity.name}
 
+    a(href='/') Home
+    br
+    a(href='/#{user._id}/recommendations') Recommendations
+    br
+    a(href='/#{user._id}/footprints') Footprints
+    br
+    a(href='/#{user._id}') Profile
+    br
+    a(href='/') Logout
+    br
+
+    h1= "Hello, " +  user.username
     br
     h2 Recommended activities based on you and your partner's preferences:
     h3 Restaurants:
