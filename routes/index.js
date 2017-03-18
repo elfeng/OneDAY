@@ -52,7 +52,6 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     var newUser = new Users(req.body);
     newUser.save(function (err, doc) {
-        //res.render('recommendations', {user: doc, title: 'One Day'});
         if (err) {
 
         } else {
@@ -70,7 +69,9 @@ router.get('/:id/recommendations', function(req, res, next) {
 
 /* GET footprints page */
 router.get('/:id/footprints', function(req, res, next) {
-    res.render('footprints', {user: {}, partner: doc.partner, title: 'One Day'});
+    Users.findById(req.params.id).exec(function (err, doc) {
+        res.render('footprints', {user: doc, partner: doc.partner, title: 'One Day'});
+    });
 });
 
 /* GET user object and insert it into preference form */
@@ -80,7 +81,7 @@ router.get('/:id', function(req,res, next) {
     });
 });
 
-/* POST user object to current object in database, updating preference form */
+/* POST user object to current object in database, updating preferences form */
 router.post('/:id', function(req, res, next) {
     Users.update({_id: req.params.id}, {$set: req.body}).exec(function(err, doc) {
         if (err) {
