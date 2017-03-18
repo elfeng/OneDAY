@@ -39,8 +39,8 @@
                 <a id="Profile" href="profile.html">
                     <li>Profile</li>
                 </a>
-                <a id="sign-in" href="sign-in.html">
-                    <li>Sign in</li>
+                <a id="sign-up" href="sign-up.html">
+                    <li>Sign up</li>
                 </a>
             </ul>
         </div>
@@ -60,30 +60,32 @@
             });
 
 
-
-            var contentString = '<div id="content">' +
-                '<div id="siteNotice">' +
-                '</div>' + '<p>Marker1</p>'
-            '</div>';
-
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString,
+            var infowindow1 = new google.maps.InfoWindow({
+                content: '<div id="content">' +
+                    '<div id="siteNotice">' + '<h3>Sakura Blossom</h3>' + '<img src="../img/sakura.jpeg">'+
+                '</div>' + '</div>',
                 maxWidth: 200
             });
-
-
-            var marker = new google.maps.Marker({
+            var marker1 = new google.maps.Marker({
                 position: {
                     lat: 49.2462,
                     lng: -123.126
                 },
                 map: map,
-                title: 'Hello World!'
-
+                icon:'../img/marker-2.png'
             });
-            marker.setMap(map);
-            marker.addListener('click', function() {
-                infowindow.open(map, marker);
+
+            // var marker2 = new google.maps.Marker({
+            //     position: {
+            //         lat: 49.286848,
+            //         long: -123.112246
+            //     }
+            //     // icon:'../img/marker-2.png'
+            // });
+
+            marker1.setMap(map);
+            marker1.addListener('click', function() {
+                infowindow1.open(map, marker1);
             });
         }
         </script>

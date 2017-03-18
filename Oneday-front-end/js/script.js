@@ -8,9 +8,22 @@ function getCookie(name) { // helper function
     if (parts.length == 2) return parts.pop().split(";").shift();
 }
 
-$(document).ready(function(event) {//garantee HTML 已经ready
-    getMarkers();
-}
+$(document).ready(function(event) { //garantee HTML 已经ready
+    // getMarkers();
+    $("#save-btn").click(function(event) {
+        event.preventDefault();
+        window.location.href = "../html/recommandations.html";
+    })
+
+    $("#sign-up-btn").click(function(event) {
+        event.preventDefault();
+        window.location.href = "../html/profile.html";
+    })
+    $("#login-btn").click(function(event) {
+        event.preventDefault();
+        window.location.href = "../html/recommandations.html";
+    })
+});
 
 
 function updateMapView() {
@@ -23,7 +36,7 @@ function updateMapView() {
 }
 
 function updateMarkersMap() {
-        markers.forEach(function(marker) {
+    markers.forEach(function(marker) {
         //assume marker has a field called name
         markersMap[marker.name] = marker;
     });
@@ -44,7 +57,7 @@ function getMarkers() {
         },
 
     });
-}
+};
 
 //     token = getCookie('x-access-token');
 //     getProducts();
@@ -108,4 +121,3 @@ function getMarkers() {
 
 //     });
 // });
-})
