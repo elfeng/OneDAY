@@ -104,41 +104,46 @@ nav {
     /*vertical-align: middle;*/
 }
 
+.navbar{
+    width: 90%;
+
+}
+
 nav ul {
     margin: 0;
     padding: 0;
 }
 
-nav ul li:hover {
-    color: #404141;
-    font-size: 1.8rem;
-}
-
 nav {
     background: transparent;
     padding: 10px;
-    text-align: center;
+    text-align: right;
     position: fixed;
     width: 100%;
     top: 20px;
     z-index: 1;
 }
 
+
 nav ul {
-    margin-top: 5rem;
+    margin-top: 7rem;
     padding: 0;
 }
 
 nav ul li {
     display: inline-block;
     color: #767467;
-    font-size: 1.75rem;
-    padding: 2rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
+    font-size: 2rem;
+    padding: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     cursor: pointer;
     font-family: sans-serif;
     transition: .3s linear color;
+}
+
+nav ul li:hover {
+    color: #B14130;
 }
 
 footer {
@@ -289,7 +294,7 @@ label {
 }
 
 #save-btn:hover{
-  background-color: #FF7866;
+  background-color:#B14130;
 
 }
 
