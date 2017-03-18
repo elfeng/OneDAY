@@ -2,11 +2,4 @@ extends layout
 
 block content
 
-    form(method="POST", action='/#{user.username}/recommendations')
-        label Username
-        input(name='username', type='text', value=user.username)
-        br
-        label Password
-        input(name='password', type='text', value=user.password)
-        br
-        input(placeholder='Login', type='submit')
+    a(href='/login') Log in

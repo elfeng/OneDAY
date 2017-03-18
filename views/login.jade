@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form(method="POST", action=action)
+        label Username
+        input(name='username', type='text')
+        br
+        label Password
+        input(name='password', type='password')
+        br
+        input(placeholder='Login', type='submit')

@@ -13,35 +13,74 @@ var userSchema = {
     activitiesAddedToCalendar: Array
 }
 
+// var activityEnum = Object.freeze({RESTAURANT, MOVIE, EVENT});
+//
+// var activitySchema = {
+//     name: String,
+//     type: activityEnum,
+//     location: {
+//         lat: Number,
+//         lng: Number
+//     },
+//     datetime: {
+//         startTime: String,
+//         endTime: String
+//     },
+//     tag: String
+// }
+//
+// var tagSchema = {
+//     type: activityEnum,
+//     name: String
+// }
+
 var Users = mongoose.model('Users', userSchema, 'users');
+// var Activities = mongoose.model('Activities', activitySchema, 'activities');
+// var Tags = mongoose.model('Tags', tagSchema, 'tags');
 
 /* GET home page */
-// TODO: move login form to separate page
 router.get('/', function(req, res, next) {
-    res.render('index', {user: {}, title: 'One DAY'});
+    res.render('index', {title: 'One Day'});
 });
 
-/* POST add user and direct to recommendations page upon login */
-router.post('/:id/recommendations', function(req, res, next) {
+/* GET login form */
+router.get('/login', function(req, res, next) {
+   res.render('login', {user: {}, action: '/login', title: 'One Day'})
+});
+
+/* POST add user and redirect to recommendations page upon login */
+router.post('/login', function(req, res, next) {
     var newUser = new Users(req.body);
     newUser.save(function (err, doc) {
-        res.render('recommendations', {user: doc, partner: doc.partner, title: 'One DAY'});
+        //res.render('recommendations', {user: doc, title: 'One Day'});
+        if (err) {
+
+        } else {
+            res.redirect('/' + doc._id + '/recommendations');
+        }
+    });
+});
+
+/* GET student object and get their recommendations page */
+router.get('/:id/recommendations', function(req, res, next) {
+    Users.findById(req.params.id).exec(function (err, doc) {
+        res.render('recommendations', {user: doc, title: 'One Day'});
     });
 });
 
 /* GET footprints page */
 router.get('/:id/footprints', function(req, res, next) {
-    res.render('footprints', {user: {}, title: 'One DAY'});
+    res.render('footprints', {user: {}, partner: doc.partner, title: 'One Day'});
 });
 
 /* GET user object and insert it into preference form */
 router.get('/:id', function(req,res, next) {
     Users.findById(req.params.id).exec(function(err, doc) {
-        res.render('preferences', {user: doc, action: '/' + doc._id, title: 'One DAY'});
+        res.render('preferences', {user: doc, action: '/' + doc._id, title: 'One Day'});
     });
 });
 
-/* POST user object to current object in database */
+/* POST user object to current object in database, updating preference form */
 router.post('/:id', function(req, res, next) {
     Users.update({_id: req.params.id}, {$set: req.body}).exec(function(err, doc) {
         if (err) {
